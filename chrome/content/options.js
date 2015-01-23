@@ -1,5 +1,6 @@
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 		.getService(Components.interfaces.nsIPrefService);
+var ssPrefs = prefs.getBranch("extensions.selectedsearch.");
 var engineBranch = prefs.getBranch("extensions.selectedsearch.engines.");
 var disabledArray = engineBranch.getChildList("", {});
 
@@ -33,33 +34,33 @@ var init = function(){
 	ebox.appendChild(cb);
     }
     doc.getElementById("contextshowtext").checked =
-        prefs.getBoolPref("extensions.selectedsearch.contextshowtext");
+        ssPrefs.getBoolPref("contextshowtext");
     doc.getElementById("contextshowtextfield").checked =
-        prefs.getBoolPref("extensions.selectedsearch.contextshowtextfield");
+        ssPrefs.getBoolPref("contextshowtextfield");
     doc.getElementById("contextshowctrl").checked =
-        prefs.getBoolPref("extensions.selectedsearch.usectrlkey");
+        ssPrefs.getBoolPref("usectrlkey");
     doc.getElementById("autocptext").checked =
-        prefs.getBoolPref("extensions.selectedsearch.autocptext");
+        ssPrefs.getBoolPref("autocptext");
     doc.getElementById("autocptextfield").checked =
-        prefs.getBoolPref("extensions.selectedsearch.autocptextfield");
+        ssPrefs.getBoolPref("autocptextfield");
     doc.getElementById("offsetx").valueNumber =
-        prefs.getIntPref("extensions.selectedsearch.offsetx");
+        ssPrefs.getIntPref("offsetx");
     doc.getElementById("offsety").valueNumber =
-        prefs.getIntPref("extensions.selectedsearch.offsety");
+        ssPrefs.getIntPref("offsety");
     doc.getElementById("offsetx.center").checked =
-        prefs.getBoolPref("extensions.selectedsearch.offsetx.center");	
+        ssPrefs.getBoolPref("offsetx.center");	
 	doc.getElementById("textual").selectedIndex =
-		prefs.getBoolPref("extensions.selectedsearch.textual") == true ? 0 : 1;
+		ssPrefs.getBoolPref("textual") == true ? 0 : 1;
 	doc.getElementById("iconrow").valueNumber =
-        prefs.getIntPref("extensions.selectedsearch.iconrow");
+        ssPrefs.getIntPref("iconrow");
 	doc.getElementById("button0").selectedIndex =
-        prefs.getIntPref("extensions.selectedsearch.button0");
+        ssPrefs.getIntPref("button0");
 	doc.getElementById("button0.close").checked =
-        prefs.getBoolPref("extensions.selectedsearch.button0.close");
+        ssPrefs.getBoolPref("button0.close");
 	doc.getElementById("button1").selectedIndex =
-        prefs.getIntPref("extensions.selectedsearch.button1");
+        ssPrefs.getIntPref("button1");
 	doc.getElementById("button1.close").checked =
-        prefs.getBoolPref("extensions.selectedsearch.button1.close");
+        ssPrefs.getBoolPref("button1.close");
 }
 
 var accept = function(){
@@ -70,33 +71,33 @@ var accept = function(){
 	    engineBranch.setBoolPref(cblist[i].label, cblist[i].checked);
     }
     var elem = doc.getElementById("contextshowtext");
-    prefs.setBoolPref("extensions.selectedsearch.contextshowtext", elem.checked);
+    ssPrefs.setBoolPref("contextshowtext", elem.checked);
     elem = doc.getElementById("contextshowtextfield");
-    prefs.setBoolPref("extensions.selectedsearch.contextshowtextfield", elem.checked);
+    ssPrefs.setBoolPref("contextshowtextfield", elem.checked);
     elem = doc.getElementById("contextshowctrl");
-    prefs.setBoolPref("extensions.selectedsearch.usectrlkey", elem.checked);
+    ssPrefs.setBoolPref("usectrlkey", elem.checked);
     elem = doc.getElementById("autocptext");
-    prefs.setBoolPref("extensions.selectedsearch.autocptext", elem.checked);
+    ssPrefs.setBoolPref("autocptext", elem.checked);
     elem = doc.getElementById("autocptextfield");
-    prefs.setBoolPref("extensions.selectedsearch.autocptextfield", elem.checked);
+    ssPrefs.setBoolPref("autocptextfield", elem.checked);
     elem = doc.getElementById("offsetx");
-    prefs.setIntPref("extensions.selectedsearch.offsetx", elem.valueNumber);
+    ssPrefs.setIntPref("offsetx", elem.valueNumber);
     elem = doc.getElementById("offsety");
-    prefs.setIntPref("extensions.selectedsearch.offsety", elem.valueNumber);    
+    ssPrefs.setIntPref("offsety", elem.valueNumber);    
 	elem = doc.getElementById("offsetx.center");
-    prefs.setBoolPref("extensions.selectedsearch.offsetx.center", elem.checked);
+    ssPrefs.setBoolPref("offsetx.center", elem.checked);
     elem = doc.getElementById("textual");
-    prefs.setBoolPref("extensions.selectedsearch.textual", elem.selectedIndex == 0 ? 1 : 0);
+    ssPrefs.setBoolPref("textual", elem.selectedIndex == 0 ? 1 : 0);
 	elem = doc.getElementById("iconrow");
-	prefs.setIntPref("extensions.selectedsearch.iconrow", elem.valueNumber);
+	ssPrefs.setIntPref("iconrow", elem.valueNumber);
     elem = doc.getElementById("button0");
-    prefs.setIntPref("extensions.selectedsearch.button0", elem.selectedIndex);
+    ssPrefs.setIntPref("button0", elem.selectedIndex);
     elem = doc.getElementById("button0.close");
-    prefs.setBoolPref("extensions.selectedsearch.button0.close", elem.checked);
+    ssPrefs.setBoolPref("button0.close", elem.checked);
     elem = doc.getElementById("button1");
-    prefs.setIntPref("extensions.selectedsearch.button1", elem.selectedIndex);
+    ssPrefs.setIntPref("button1", elem.selectedIndex);
     elem = doc.getElementById("button1.close");
-    prefs.setBoolPref("extensions.selectedsearch.button1.close", elem.checked);
+    ssPrefs.setBoolPref("button1.close", elem.checked);
     window.close();
 }
 
