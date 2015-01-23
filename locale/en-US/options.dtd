@@ -1,0 +1,29 @@
+<!ENTITY title "Selected Search Preferences">
+<!ENTITY engines "Search engines used">
+<!ENTITY autocpgb "Copy text on selection from">
+<!ENTITY autocptext "Text content">
+<!ENTITY autocptextfield "Textfields">
+<!ENTITY contextshowgb "Show popup">
+<!ENTITY contextshowtext "when selecting text content">
+<!ENTITY contextshowtextfield "when selecting textfields">
+<!ENTITY contextshowctrl "only when Ctrl key is pressed">
+<!ENTITY offset "Popup offset">
+<!ENTITY offsetx "X:">
+<!ENTITY offsety "Y:">
+<!ENTITY offsetx.center "center horizontally">
+<!ENTITY popupstyle "Popup style">
+<!ENTITY popupstyleicontext "icon &amp; text">
+<!ENTITY popupstyleicon "icon only">
+<!ENTITY popupstyleipr "icons per row">
+<!ENTITY setmbb "Set mouse button behavior">
+<!ENTITY setmbbl "Left button">
+<!ENTITY setmbbm "Middle button">
+<!ENTITY setmbb0 "Do nothing">
+<!ENTITY setmbb1 "Open in current tab">
+<!ENTITY setmbb2 "Open in new background tab">
+<!ENTITY setmbb3 "Open in new foreground tab">
+<!ENTITY setmbb4 "Open in one new foreground tab">
+<!ENTITY setmbbclose "close popup after click">
+<!ENTITY ok "OK">
+<!ENTITY cancel "Cancel">
+

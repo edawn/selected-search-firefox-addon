@@ -1,0 +1,14 @@
+pref("extensions.selectedsearch.contextshowtext", true);
+pref("extensions.selectedsearch.contextshowtextfield", true);
+pref("extensions.selectedsearch.autocptext", false);
+pref("extensions.selectedsearch.autocptextfield", false);
+pref("extensions.selectedsearch.offsetx", 0);
+pref("extensions.selectedsearch.offsety", 0);
+pref("extensions.selectedsearch.offsetx.center", true);
+pref("extensions.selectedsearch.textual", false);
+pref("extensions.selectedsearch.iconrow", 4);
+pref("extensions.selectedsearch.button0", 1);
+pref("extensions.selectedsearch.button0.close", false);
+pref("extensions.selectedsearch.button1", 2);
+pref("extensions.selectedsearch.button1.close", false);
+pref("extensions.selectedsearch.usectrlkey", false);
