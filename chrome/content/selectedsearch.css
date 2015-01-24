@@ -1,3 +1,4 @@
+panel#selectedsearch-popup { border-width: 0px }
 panel#selectedsearch-popup > menuitem { -moz-appearance: none; }
 panel#selectedsearch-popup > menuitem:hover { color: HighlightText; background-color: Highlight; }
 panel#selectedsearch-popup > menuitem > .menu-accel-container { visibility: collapse; }
