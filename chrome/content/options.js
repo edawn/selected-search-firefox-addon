@@ -53,6 +53,7 @@ var init = function(){
 		ssPrefs.getBoolPref("textual") == true ? 0 : 1;
 	doc.getElementById("iconrow").valueNumber =
         ssPrefs.getIntPref("iconrow");
+	doc.getElementById("iconsize").valueNumber = ssPrefs.getIntPref("iconsize");
 	doc.getElementById("button0").selectedIndex =
         ssPrefs.getIntPref("button0");
 	doc.getElementById("button0.close").checked =
@@ -90,6 +91,8 @@ var accept = function(){
     ssPrefs.setBoolPref("textual", elem.selectedIndex == 0 ? 1 : 0);
 	elem = doc.getElementById("iconrow");
 	ssPrefs.setIntPref("iconrow", elem.valueNumber);
+	elem = doc.getElementById("iconsize");
+	ssPrefs.setIntPref("iconsize", elem.valueNumber);
     elem = doc.getElementById("button0");
     ssPrefs.setIntPref("button0", elem.selectedIndex);
     elem = doc.getElementById("button0.close");

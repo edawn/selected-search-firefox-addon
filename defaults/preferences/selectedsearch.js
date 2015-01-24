@@ -7,6 +7,7 @@ pref("extensions.selectedsearch.offsety", 0);
 pref("extensions.selectedsearch.offsetx.center", true);
 pref("extensions.selectedsearch.textual", false);
 pref("extensions.selectedsearch.iconrow", 4);
+pref("extensions.selectedsearch.iconsize", 16);
 pref("extensions.selectedsearch.button0", 2);
 pref("extensions.selectedsearch.button0.close", false);
 pref("extensions.selectedsearch.button1", 1);

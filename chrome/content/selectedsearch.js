@@ -106,6 +106,7 @@ var selectedsearch =
 	} else {
 	  container = popup;
 	}
+	var iconSize = selectedsearch.ssPrefs.getIntPref("iconsize") + 2;
 	var j = 0;
 	for (var i = 0; i < engines.length; i++) {
       if (!selectedsearch.isEnabledEngine(engines[i].name)) continue;
@@ -121,13 +122,13 @@ var selectedsearch =
 		}
       } else {
         searchitem = document.createElement("image");
-		searchitem.setAttribute("width", "18");
-		searchitem.setAttribute("height", "18");
+		searchitem.setAttribute("width", iconSize);
 		searchitem.setAttribute("tooltiptext", engines[i].name);
 		if (engines[i].iconURI != null) {
 			searchitem.setAttribute("src", engines[i].iconURI.spec);
 		}
 	  }
+	  searchitem.setAttribute("height", iconSize);
 
       container.appendChild(searchitem);
 	  if (iconic && j >= selectedsearch.ssPrefs.getIntPref("iconrow")-1){
