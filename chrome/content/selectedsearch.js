@@ -7,6 +7,7 @@ var selectedsearch =
   window: null,
   popup: null,
   newTab: null,
+  parentTab: null,
   load: function () {
     var prefs = Components.classes["@mozilla.org/preferences-service;1"]
                   .getService(Components.interfaces.nsIPrefService);
@@ -70,6 +71,7 @@ var selectedsearch =
 	// +1: avoids problems with tripleclick
 	var y = event.screenY+selectedsearch.ssPrefs.getIntPref("offsety")+1;
     selectedsearch.popup.openPopupAtScreen(x, y, false);
+	selectedsearch.parentTab = gBrowser.selectedTab;
   },
   
   keydownhandler: function(event) {
@@ -152,18 +154,27 @@ var selectedsearch =
 	    gBrowser.loadURIWithFlags(params.searchUrl, null, null, null, params.postData);
 		break;
 	  case 2: // Open in new background tab
-	    gBrowser.addTab(params.searchUrl, null, null, params.postData, gBrowser.selectedTab, false);
+		if ('TreeStyleTabService' in window) {
+			TreeStyleTabService.readyToOpenChildTabNow(selectedsearch.parentTab);
+		}
+	    gBrowser.addTab(params.searchUrl, {postData: params.postData, owner: selectedsearch.parentTab, relatedToCurrent: true});
 		break;
 	  case 3: // Open in new foreground tab
-        gBrowser.selectedTab = gBrowser.addTab(params.searchUrl, null, null, params.postData, gBrowser.selectedTab, false);
+		if ('TreeStyleTabService' in window) {
+			TreeStyleTabService.readyToOpenChildTabNow(selectedsearch.parentTab);
+		}
+        gBrowser.selectedTab = gBrowser.addTab(params.searchUrl, {postData: params.postData, owner: selectedsearch.parentTab, relatedToCurrent: true});
 		break;
 	  case 4: // Open in one new foreground tab
 	    if (!selectedsearch.newTab) {
-		  selectedsearch.newTab = gBrowser.addTab(params.searchUrl, null, null, params.postData, gBrowser.selectedTab, false);
+		  if ('TreeStyleTabService' in window) {
+			  TreeStyleTabService.readyToOpenChildTabNow(selectedsearch.parentTab);
+		  }
+		  selectedsearch.newTab = gBrowser.addTab(params.searchUrl, {postData: params.postData, owner: selectedsearch.parentTab, relatedToCurrent: true});
 		  gBrowser.selectedTab = selectedsearch.newTab;
 		} else {
 		  gBrowser.selectedTab = selectedsearch.newTab;
-	      gBrowser.loadURIWithFlags(params.searchUrl, null, null, null, params.postData);
+		  gBrowser.loadURIWithFlags(params.searchUrl, null, null, null, params.postData);
 		}
 	}
   },
