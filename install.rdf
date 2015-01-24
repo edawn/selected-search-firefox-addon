@@ -6,7 +6,7 @@
   <Description about="urn:mozilla:install-manifest">
   
     <em:id>{a3b1e8b3-ba2c-4280-9768-198db1817b5d}</em:id>
-    <em:version>0.4.0</em:version>
+    <em:version>0.4.150124</em:version>
     
     <em:targetApplication>
       <Description>
@@ -19,7 +19,7 @@
     <em:name>Selected Search</em:name>
     <em:description>Search by text selection</em:description>
     <em:creator>Kamil Sartys</em:creator>
-    <em:homepageURL>https://addons.mozilla.org/firefox/addon/selected-search/</em:homepageURL>
+    <em:homepageURL>https://addons.mozilla.org/addon/selected-search/</em:homepageURL>
     <em:optionsURL>chrome://selectedsearch/content/options.xul</em:optionsURL>
     
   </Description>      
