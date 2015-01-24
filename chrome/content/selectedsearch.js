@@ -8,6 +8,7 @@ var selectedsearch =
   popup: null,
   newTab: null,
   parentTab: null,
+  lastPopupWidth: null,
   load: function () {
     var prefs = Components.classes["@mozilla.org/preferences-service;1"]
                   .getService(Components.interfaces.nsIPrefService);
@@ -22,7 +23,10 @@ var selectedsearch =
 	  if (!selectedsearch.ssPrefs.getBoolPref("offsetx.center")) return;
 	  var popup = e.target;
 	  var bo = popup.boxObject;
-	  popup.moveTo(bo.screenX-selectedsearch.ssPrefs.getIntPref("offsetx")-bo.width/2,bo.screenY);
+	  if (selectedsearch.lastPopupWidth != bo.width) {
+	    popup.moveTo(bo.screenX-selectedsearch.ssPrefs.getIntPref("offsetx")-(bo.width-selectedsearch.lastPopupWidth)/2,bo.screenY);
+		selectedsearch.lastPopupWidth = bo.width;
+	  }
 	}, false); 
     
     gBrowser.addEventListener("mousedown", selectedsearch.mousedownhandler, false);
@@ -68,6 +72,9 @@ var selectedsearch =
     selectedsearch.rebuildmenu();
 	
 	var x = event.screenX+selectedsearch.ssPrefs.getIntPref("offsetx");
+	if (selectedsearch.ssPrefs.getBoolPref("offsetx.center")) {
+		x -= selectedsearch.lastPopupWidth / 2;
+	}
 	// +1: avoids problems with tripleclick
 	var y = event.screenY+selectedsearch.ssPrefs.getIntPref("offsety")+1;
     selectedsearch.popup.openPopupAtScreen(x, y, false);
