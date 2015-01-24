@@ -1,26 +1,27 @@
 var selectedsearch =
 {
   searchText: null,
-  prefs: null,
-  engineBranch: null,
+  ssPrefs: null,
+  enginePrefs: null,
   clipboard: null,
   window: null,
   popup: null,
   newTab: null,
   load: function () {
-    selectedsearch.prefs = Components.classes["@mozilla.org/preferences-service;1"]
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"]
                   .getService(Components.interfaces.nsIPrefService);
-    selectedsearch.engineBranch = selectedsearch.prefs.getBranch("extensions.selectedsearch.engines.");
+	selectedsearch.ssPrefs = prefs.getBranch("extensions.selectedsearch.");
+    selectedsearch.enginePrefs = prefs.getBranch("extensions.selectedsearch.engines.");
     selectedsearch.clipboard = Components.classes["@mozilla.org/widget/clipboardhelper;1"]
 	    	.getService(Components.interfaces.nsIClipboardHelper);
     selectedsearch.popup = document.getElementById("selectedsearch-popup");
 
 	// center horizontally
 	selectedsearch.popup.addEventListener("popupshown", function(e){
-	  if (!selectedsearch.prefs.getBoolPref("extensions.selectedsearch.offsetx.center")) return;
+	  if (!selectedsearch.ssPrefs.getBoolPref("offsetx.center")) return;
 	  var popup = e.target;
 	  var bo = popup.boxObject;
-	  popup.moveTo(bo.screenX-selectedsearch.prefs.getIntPref("extensions.selectedsearch.offsetx")-bo.width/2,bo.screenY);
+	  popup.moveTo(bo.screenX-selectedsearch.ssPrefs.getIntPref("offsetx")-bo.width/2,bo.screenY);
 	}, false); 
     
     gBrowser.addEventListener("mousedown", selectedsearch.mousedownhandler, false);
@@ -42,21 +43,21 @@ var selectedsearch =
     
   mouseuphandler: function(event) {
     if (event.button != 0) return;
-	if (selectedsearch.prefs.getBoolPref("extensions.selectedsearch.usectrlkey") && !event.ctrlKey) return;
+	if (selectedsearch.ssPrefs.getBoolPref("usectrlkey") && !event.ctrlKey) return;
     var searchText = "";
     var toCopy = "";
     var et = event.target;
     if (et.tagName == "TEXTAREA" || (et.tagName == "INPUT" && et.type == "text")){
       var selectedText = et.value.substring(et.selectionStart, et.selectionEnd);
       if (selectedText.length == 0) return;
-      if (selectedsearch.prefs.getBoolPref("extensions.selectedsearch.autocptextfield")) toCopy = selectedText;
-      if (selectedsearch.prefs.getBoolPref("extensions.selectedsearch.contextshowtextfield")) searchText = selectedText;
+      if (selectedsearch.ssPrefs.getBoolPref("autocptextfield")) toCopy = selectedText;
+      if (selectedsearch.ssPrefs.getBoolPref("contextshowtextfield")) searchText = selectedText;
     }
     else {
       var selectedText = event.view.getSelection().toString();
       if (selectedText.length == 0) return;
-      if (selectedsearch.prefs.getBoolPref("extensions.selectedsearch.autocptext")) toCopy = selectedText;
-      if (selectedsearch.prefs.getBoolPref("extensions.selectedsearch.contextshowtext")) searchText = selectedText;
+      if (selectedsearch.ssPrefs.getBoolPref("autocptext")) toCopy = selectedText;
+      if (selectedsearch.ssPrefs.getBoolPref("contextshowtext")) searchText = selectedText;
     }
     if (toCopy != "") selectedsearch.clipboard.copyString(toCopy);
 
@@ -65,22 +66,22 @@ var selectedsearch =
     selectedsearch.searchText = searchText;
     selectedsearch.rebuildmenu();
 	
-	var x = event.screenX+selectedsearch.prefs.getIntPref("extensions.selectedsearch.offsetx");
+	var x = event.screenX+selectedsearch.ssPrefs.getIntPref("offsetx");
 	// +1: avoids problems with tripleclick
-	var y = event.screenY+selectedsearch.prefs.getIntPref("extensions.selectedsearch.offsety")+1;
+	var y = event.screenY+selectedsearch.ssPrefs.getIntPref("offsety")+1;
     selectedsearch.popup.openPopupAtScreen(x, y, false);
   },
   
   keydownhandler: function(event) {
-	if (!selectedsearch.prefs.getBoolPref("extensions.selectedsearch.usectrlkey") || event.keyCode != KeyboardEvent.DOM_VK_CONTROL) {
+	if (!selectedsearch.ssPrefs.getBoolPref("usectrlkey") || event.keyCode != KeyboardEvent.DOM_VK_CONTROL) {
       selectedsearch.popup.hidePopup();
 	}
   },
 
   isEnabledEngine: function(engineId) {
-    var disabledArray = selectedsearch.engineBranch.getChildList("", {});
+    var disabledArray = selectedsearch.enginePrefs.getChildList("", {});
     var di = disabledArray.indexOf(engineId);
-    return di == -1 ? true : selectedsearch.engineBranch.getBoolPref(disabledArray[di]);
+    return di == -1 ? true : selectedsearch.enginePrefs.getBoolPref(disabledArray[di]);
   },
 
   rebuildmenu: function () {
@@ -95,7 +96,7 @@ var selectedsearch =
 	
 	selectedsearch.newTab = null;
   
-    var iconic = !selectedsearch.prefs.getBoolPref("extensions.selectedsearch.textual"); 
+    var iconic = !selectedsearch.ssPrefs.getBoolPref("textual"); 
 	var container;
 	if (iconic) {
 	  container = document.createElement("hbox");
@@ -127,7 +128,7 @@ var selectedsearch =
 	  }
 
       container.appendChild(searchitem);
-	  if (iconic && j >= selectedsearch.prefs.getIntPref("extensions.selectedsearch.iconrow")-1){
+	  if (iconic && j >= selectedsearch.ssPrefs.getIntPref("iconrow")-1){
 		container = document.createElement("hbox");
 		popup.appendChild(container);
 		j = 0;
@@ -142,9 +143,9 @@ var selectedsearch =
   menuitemclick: function (aEvent) {
     var btn = aEvent.button;
 	if (btn != 0 && btn !=1) return;
-	var close = selectedsearch.prefs.getBoolPref("extensions.selectedsearch.button"+btn+".close");
+	var close = selectedsearch.ssPrefs.getBoolPref("button"+btn+".close");
 	if (close) selectedsearch.popup.hidePopup();
-	var action = selectedsearch.prefs.getIntPref("extensions.selectedsearch.button"+btn);
+	var action = selectedsearch.ssPrefs.getIntPref("button"+btn);
     var params = selectedsearch.getSearchParams(aEvent.target.engine, selectedsearch.searchText);
 	switch (action) {
       case 1: // Open in current tab

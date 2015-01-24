@@ -1,12 +1,12 @@
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 		.getService(Components.interfaces.nsIPrefService);
 var ssPrefs = prefs.getBranch("extensions.selectedsearch.");
-var engineBranch = prefs.getBranch("extensions.selectedsearch.engines.");
-var disabledArray = engineBranch.getChildList("", {});
+var enginePrefs = prefs.getBranch("extensions.selectedsearch.engines.");
+var disabledArray = enginePrefs.getChildList("", {});
 
 var isEnabled = function(engineId){
     var di = disabledArray.indexOf(engineId);
-    return di == -1 ? true : engineBranch.getBoolPref(disabledArray[di]);
+    return di == -1 ? true : enginePrefs.getBoolPref(disabledArray[di]);
 }
 
 var init = function(){
@@ -68,7 +68,7 @@ var accept = function(){
     var ebox = doc.getElementById("engines");
     var cblist = ebox.getElementsByTagName("checkbox");
     for (var i = 0; i < cblist.length; i++){
-	    engineBranch.setBoolPref(cblist[i].label, cblist[i].checked);
+	    enginePrefs.setBoolPref(cblist[i].label, cblist[i].checked);
     }
     var elem = doc.getElementById("contextshowtext");
     ssPrefs.setBoolPref("contextshowtext", elem.checked);
