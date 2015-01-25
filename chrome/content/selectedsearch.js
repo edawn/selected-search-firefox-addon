@@ -28,6 +28,13 @@ var selectedsearch =
 	  }
 	}, false); 
     
+	var searchbar = document.getElementById("searchbar");
+	if (!searchbar.hasAttribute("oneoffui") || searchbar.getAttribute("oneoffui") !== "true") {
+		searchbar.textbox.addEventListener("mousedown", selectedsearch.mousedownhandler, false);
+		searchbar.textbox.addEventListener("mouseup", selectedsearch.mouseuphandler, false);
+		searchbar.textbox.addEventListener("keydown", selectedsearch.keydownhandler, false);
+	}
+
     gBrowser.addEventListener("mousedown", selectedsearch.mousedownhandler, false);
     gBrowser.addEventListener("mouseup", selectedsearch.mouseuphandler, false);
     gBrowser.addEventListener("keydown", selectedsearch.keydownhandler, false);
@@ -37,7 +44,7 @@ var selectedsearch =
     if (event.button != 0) return;
 	var selectedText;
     var et = event.target;
-    if (et.tagName == "TEXTAREA" || (et.tagName == "INPUT" && et.type == "text")){
+    if (et.tagName == "TEXTAREA" || (et.tagName == "INPUT" && et.type == "text") || et.className == "searchbar-textbox"){
       selectedText = et.value.substring(et.selectionStart, et.selectionEnd);
 	} else {
 	  selectedText = event.view.getSelection().toString();
@@ -51,7 +58,7 @@ var selectedsearch =
     var searchText = "";
     var toCopy = "";
     var et = event.target;
-    if (et.tagName == "TEXTAREA" || (et.tagName == "INPUT" && et.type == "text")){
+    if (et.tagName == "TEXTAREA" || (et.tagName == "INPUT" && et.type == "text") || et.className == "searchbar-textbox"){
       var selectedText = et.value.substring(et.selectionStart, et.selectionEnd);
       if (selectedText.length == 0) return;
       if (selectedsearch.ssPrefs.getBoolPref("autocptextfield")) toCopy = selectedText;
