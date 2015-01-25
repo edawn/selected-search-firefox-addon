@@ -4,7 +4,6 @@ var selectedsearch =
   ssPrefs: null,
   enginePrefs: null,
   clipboard: null,
-  window: null,
   popup: null,
   newTab: null,
   parentTab: null,
