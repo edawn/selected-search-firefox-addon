@@ -3,80 +3,80 @@
 <!DOCTYPE window SYSTEM "chrome://selectedsearch/locale/options.dtd">
 <window title="&title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <script src="options.js"/>
-	<hbox>
-	<vbox id="lbox">
-    <groupbox flex="1">
-		<caption label="&engines;"/>
-		<vbox id="engines" flex="1" style="overflow: auto"></vbox>
-	</groupbox>
-	</vbox>
-	<vbox flex="1">
-	<vbox id="rbox">
-    <groupbox>
-        <caption label="&contextshowgb;"/>
-        <checkbox id="contextshowtext" label="&contextshowtext;"/>
-        <checkbox id="contextshowtextfield" label="&contextshowtextfield;"/>
-        <checkbox id="contextshowctrl" label="&contextshowctrl;" />
-    </groupbox>
-    <groupbox>
-        <caption label="&autocpgb;"/>
-        <checkbox id="autocptext" label="&autocptext;"/>
-        <checkbox id="autocptextfield" label="&autocptextfield;"/>
-    </groupbox>
-    <groupbox>
-        <caption label="&offset;"/>
-        <hbox align="center">
-            <label value="&offsetx;"/>
-            <textbox id="offsetx" maxlength="4" min="-999" max="999" size="4" type="number" hidespinbuttons="true"/>
-            <label value="&offsety;"/>
-            <textbox id="offsety" maxlength="4" min="-999" max="999" size="4" type="number" hidespinbuttons="true"/>
-        </hbox>
-		<checkbox id="offsetx.center" label="&offsetx.center;"/>
-    </groupbox>
-	<groupbox>
-		<caption label="&popupstyle;"/>
-		<radiogroup id="textual" orient="horizontal">
-			<radio label="&popupstyleicontext;"/>
-			<radio label="&popupstyleicon;"/>
-		</radiogroup>
-		<hbox align="center">
-			<label value="&popupstyleipr;"/>
-			<textbox id="iconrow" maxlength="2" min="1" max="20" size="2" type="number" hidespinbuttons="true"/>
-		</hbox>
-		<hbox align="center">
-			<label value="&popupstyleiconsize;" />
-			<textbox id="iconsize" maxlength="2" min="4" max="99" size="2" type="number" hidespinbuttons="true" tooltiptext="&popupstyleiconsizetooltip;" />
-		</hbox>
-	</groupbox>
-	<groupbox>
-		<caption label="&setmbb;"/>
-		<label value="&setmbbl;"/>
-		<menulist id="button0">
-			<menupopup>
-				<menuitem value="0" label="&setmbb0;"/>
-				<menuitem value="1" label="&setmbb1;"/>
-				<menuitem value="2" label="&setmbb2;"/>
-				<menuitem value="3" label="&setmbb3;"/>
-				<menuitem value="4" label="&setmbb4;"/>
-			</menupopup>
-		</menulist>
-		<checkbox id="button0.close" label="&setmbbclose;"/>
-		<label value="&setmbbm;"/>
-		<menulist id="button1">
-			<menupopup>
-				<menuitem value="0" label="&setmbb0;"/>
-				<menuitem value="1" label="&setmbb1;"/>
-				<menuitem value="2" label="&setmbb2;"/>
-				<menuitem value="3" label="&setmbb3;"/>
-				<menuitem value="4" label="&setmbb4;"/>
-			</menupopup>
-		</menulist>
-		<checkbox id="button1.close" label="&setmbbclose;"/>
-	</groupbox>
-	</vbox>
-	<spacer flex="1"/>
-	</vbox>
-	</hbox>
+    <hbox>
+        <vbox id="lbox">
+            <groupbox flex="1">
+                <caption label="&engines;"/>
+                <vbox id="engines" flex="1" style="overflow: auto"/>
+            </groupbox>
+        </vbox>
+        <vbox flex="1">
+            <vbox id="rbox">
+                <groupbox>
+                    <caption label="&contextshowgb;"/>
+                    <checkbox id="contextshowtext" label="&contextshowtext;"/>
+                    <checkbox id="contextshowtextfield" label="&contextshowtextfield;"/>
+                    <checkbox id="contextshowctrl" label="&contextshowctrl;" />
+                </groupbox>
+                <groupbox>
+                    <caption label="&autocpgb;"/>
+                    <checkbox id="autocptext" label="&autocptext;"/>
+                    <checkbox id="autocptextfield" label="&autocptextfield;"/>
+                </groupbox>
+                <groupbox>
+                    <caption label="&offset;"/>
+                    <hbox align="center">
+                        <label value="&offsetx;"/>
+                        <textbox id="offsetx" maxlength="4" min="-999" max="999" size="4" type="number" hidespinbuttons="true"/>
+                        <label value="&offsety;"/>
+                        <textbox id="offsety" maxlength="4" min="-999" max="999" size="4" type="number" hidespinbuttons="true"/>
+                    </hbox>
+                    <checkbox id="offsetx.center" label="&offsetx.center;"/>
+                </groupbox>
+                <groupbox>
+                    <caption label="&popupstyle;"/>
+                    <radiogroup id="textual" orient="horizontal">
+                        <radio label="&popupstyleicontext;"/>
+                        <radio label="&popupstyleicon;"/>
+                    </radiogroup>
+                    <hbox align="center">
+                        <label value="&popupstyleipr;"/>
+                        <textbox id="iconrow" maxlength="2" min="1" max="20" size="2" type="number" hidespinbuttons="true"/>
+                    </hbox>
+                    <hbox align="center">
+                        <label value="&popupstyleiconsize;" />
+                        <textbox id="iconsize" maxlength="2" min="4" max="99" size="2" type="number" hidespinbuttons="true" tooltiptext="&popupstyleiconsizetooltip;" />
+                    </hbox>
+                </groupbox>
+                <groupbox>
+                    <caption label="&setmbb;"/>
+                    <label value="&setmbbl;"/>
+                    <menulist id="button0">
+                        <menupopup>
+                            <menuitem value="0" label="&setmbb0;"/>
+                            <menuitem value="1" label="&setmbb1;"/>
+                            <menuitem value="2" label="&setmbb2;"/>
+                            <menuitem value="3" label="&setmbb3;"/>
+                            <menuitem value="4" label="&setmbb4;"/>
+                        </menupopup>
+                    </menulist>
+                    <checkbox id="button0.close" label="&setmbbclose;"/>
+                    <label value="&setmbbm;"/>
+                    <menulist id="button1">
+                        <menupopup>
+                            <menuitem value="0" label="&setmbb0;"/>
+                            <menuitem value="1" label="&setmbb1;"/>
+                            <menuitem value="2" label="&setmbb2;"/>
+                            <menuitem value="3" label="&setmbb3;"/>
+                            <menuitem value="4" label="&setmbb4;"/>
+                        </menupopup>
+                    </menulist>
+                    <checkbox id="button1.close" label="&setmbbclose;"/>
+                </groupbox>
+            </vbox>
+            <spacer flex="1"/>
+        </vbox>
+    </hbox>
     <hbox>
         <button label="&ok;" oncommand="accept();"/>
         <button label="&cancel;" oncommand="close();"/>

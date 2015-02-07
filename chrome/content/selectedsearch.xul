@@ -2,16 +2,9 @@
 <?xml-stylesheet href="chrome://selectedsearch/content/selectedsearch.css" type="text/css"?>
 <!DOCTYPE window SYSTEM "chrome://browser/locale/browser.dtd">
 
-<overlay id="selectedsearch-overlay"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  
-  <script type="application/x-javascript"
-    src="chrome://selectedsearch/content/selectedsearch.js"/>
-    
-  	<popupset id="mainPopupSet">
-		<panel id="selectedsearch-popup"
-			noautofocus="true"
-			level="top"/>
-	</popupset>
-    
+<overlay id="selectedsearch-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/x-javascript" src="chrome://selectedsearch/content/selectedsearch.js"/>
+    <popupset id="mainPopupSet">
+        <panel id="selectedsearch-popup" noautofocus="true" level="top"/>
+    </popupset>
 </overlay>
