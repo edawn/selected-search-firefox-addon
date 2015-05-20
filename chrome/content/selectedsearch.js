@@ -198,7 +198,7 @@ var selectedsearch = {
         var params = selectedsearch.getSearchParams(aEvent.target.engine, selectedsearch.searchText);
         switch (action) {
         case 1: // Open in current tab
-            gBrowser.loadURIWithFlags(params.searchUrl, null, null, null, params.postData);
+            gBrowser.loadURIWithFlags(params.searchUrl, 0, null, null, params.postData);
             break;
         case 2: // Open in new background tab
             if ('TreeStyleTabService' in window) {
@@ -233,7 +233,7 @@ var selectedsearch = {
                 gBrowser.selectedTab = selectedsearch.newTab;
             } else {
                 gBrowser.selectedTab = selectedsearch.newTab;
-                gBrowser.loadURIWithFlags(params.searchUrl, null, null, null, params.postData);
+                gBrowser.loadURIWithFlags(params.searchUrl, 0, null, null, params.postData);
             }
         }
     },
