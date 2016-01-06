@@ -1,3 +1,4 @@
 overlay	chrome://browser/content/browser.xul	chrome://selectedsearch/content/selectedsearch.xul
 content	selectedsearch	chrome/content/
 locale selectedsearch en-US chrome/locale/en-US/
+locale selectedsearch ja chrome/locale/ja/
