@@ -2,12 +2,12 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
         <em:id>{a3b1e8b3-ba2c-4280-9768-198db1817b5d}</em:id>
-        <em:version>0.4.150520</em:version>
+        <em:version>0.4.160106</em:version>
         <em:targetApplication>
             <Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                 <em:minVersion>3.0</em:minVersion>
-                <em:maxVersion>38.*</em:maxVersion>
+                <em:maxVersion>45.*</em:maxVersion>
             </Description>
         </em:targetApplication>
         <em:name>Selected Search</em:name>
