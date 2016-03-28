@@ -31,7 +31,7 @@ var selectedsearch = {
         }, false);
 
         var searchbar = document.getElementById("searchbar");
-        if (!searchbar.hasAttribute("oneoffui") || searchbar.getAttribute("oneoffui") !== "true") {
+        if (searchbar !== null && (!searchbar.hasAttribute("oneoffui") || searchbar.getAttribute("oneoffui") !== "true")) {
             searchbar.textbox.addEventListener("mousedown", selectedsearch.mousedownhandler, false);
             searchbar.textbox.addEventListener("mouseup", selectedsearch.mouseuphandler, false);
             searchbar.textbox.addEventListener("keydown", selectedsearch.keydownhandler, false);
